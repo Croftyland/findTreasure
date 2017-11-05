@@ -2,13 +2,13 @@
  * Created by Crofty on 11/5/17.
  */
 
-//get random number from 0 to size-1
+    //get random number from 0 to size-1
 
 var getRandomNumber = function (size) {
 
-    return Math.floor(Math.random() * size);
+        return Math.floor(Math.random() * size);
 
-};
+    };
 
 //calculate distance between click(event) to treasure (target)
 
@@ -23,19 +23,19 @@ var getDistance = function (event, target) {
 
 var getDistanceHint = function (distance) {
 
-    if (distance < 10) {
+    if (distance < 20) {
         return "You're so close!";
     }
 
-    else if (distance < 20) {
+    else if (distance < 40) {
         return "You're closer!";
     }
 
-    else if (distance < 40) {
+    else if (distance < 80) {
         return "Actually you on the right way!";
     }
 
-    else if (distance < 80) {
+    else if (distance < 100) {
         return "Common,you almost there!";
     }
 
@@ -47,6 +47,7 @@ var getDistanceHint = function (distance) {
     }
 
 };
+
 
 //create variables
 
@@ -66,6 +67,10 @@ var target = {
 $("#map").click(function (event) {
     clicks++;
 
+    //show how many clicks gamer made
+
+    document.getElementById("clicks").innerHTML = clicks;
+
     //get distance between click and treasure
 
     var distance = getDistance(event, target);
@@ -80,8 +85,15 @@ $("#map").click(function (event) {
 
     //if click was too close, we congrats with victory
 
-    if (distance < 8){
-        alert("Treasure was found! Clicks were made:"  + clicks);
+    if (distance < 10) {
+        alert("Treasure was found! Clicks were made:" + clicks);
+    }
+
+    //if gamer made more than 50 clicks,would show massage "game over"
+
+    if (clicks > 50) {
+
+        alert("Sorry,but your game is over...")
     }
 
 });
